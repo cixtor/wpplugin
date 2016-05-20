@@ -11,7 +11,30 @@ if (!file_exists(WP_TEST_DIR)) {
     printf("@ Cloning development repository... ");
     @exec($command, $output, $return_var);
     printf("DONE\n");
-    exit(0);
+
+    if ($return_var === 0 && file_exists(WP_TEST_DIR)) {
+        printf("@ Creating configuration file\n");
+        $config = file_get_contents('wordpress/wp-tests-config-sample.php');
+
+        printf("  Setting database name (will be truncated every time)\n");
+        $config = str_replace('youremptytestdbnamehere', 'wordpress', $config);
+
+        printf("  Setting database username\n");
+        $config = str_replace('yourusernamehere', 'root', $config);
+
+        printf("  Setting database password\n");
+        $config = str_replace('yourpasswordhere', 'password', $config);
+
+        printf("  Setting website hostname\n");
+        $config = str_replace('example.org', 'wordpress.test', $config);
+
+        file_put_contents('wordpress/wp-tests-config.php', $config);
+        printf("@ Finished\n");
+        exit(0);
+    }
+
+    print_r($output);
+    exit(1);
 }
 
 require_once(WP_TEST_DIR . '/tests/phpunit/includes/functions.php');
