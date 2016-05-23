@@ -17,4 +17,20 @@ class DependenciesTest extends WP_UnitTestCase
             'WordPress built-in function does not exists'
         );
     }
+
+    public function testDependencyAddAction()
+    {
+        $this->assertTrue(
+            function_exists('add_action'),
+            'WordPress built-in function does not exists'
+        );
+    }
+
+    public function testDependencyRemoveAction()
+    {
+        $this->assertTrue(
+            function_exists('remove_action'),
+            'WordPress built-in function does not exists'
+        );
+    }
 }
