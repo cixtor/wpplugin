@@ -33,4 +33,20 @@ class DependenciesTest extends WP_UnitTestCase
             'WordPress built-in function does not exists'
         );
     }
+
+    public function testDependencyWpRemoteGet()
+    {
+        $this->assertTrue(
+            function_exists('wp_remote_get'),
+            'WordPress built-in function does not exists'
+        );
+    }
+
+    public function testDependencyWpRemotePost()
+    {
+        $this->assertTrue(
+            function_exists('wp_remote_post'),
+            'WordPress built-in function does not exists'
+        );
+    }
 }
