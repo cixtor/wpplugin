@@ -49,3 +49,10 @@ foreach ($_dependencies as $dependency) {
         exit(0);
     }
 }
+
+function wp_plugin_function()
+{
+    echo '<p id="wp-plugin">Lorem ipsum dolor...</p>';
+}
+
+add_action('admin_notices', 'wp_plugin_function');
