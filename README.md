@@ -14,6 +14,8 @@ This project goes beyond that and includes code that will automatically download
 
 The configuration file used for the tests assumes that you have a database named _"wordpress"_ that must not contain important information because every time the installer script is called the database will be truncated. Additionally, it assumes that there is an account named _"root"_ with password _"password"_ which you can easily change editing the _"tests/bootstrap.php"_ file. The base URL for the website is set to _"wordpress.test"_ by default. Make sure to include this in your hosts file pointing to the localhost address.
 
+You can also access the administration dashboard using the username _"admin"_ and the password _"password"_. These are defined in the installer script and can not be changed unless you keep a copy of the WordPress repository at hand.
+
 ```shell
 export MYSQL_PWD=password
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS wordpress;"
