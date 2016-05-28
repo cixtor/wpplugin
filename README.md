@@ -39,6 +39,12 @@ $ tree
 └── wpplugin.php
 ```
 
+### More Information
+
+- [WordPress Automated Testing](https://make.wordpress.org/core/handbook/testing/automated-testing/phpunit/)
+- [WP-CLI Plugin Unit-Tests](http://wp-cli.org/docs/plugin-unit-tests/)
+- [WP-CLI Plugin Sample](https://github.com/wp-cli/sample-plugin)
+
 ### License
 
 ```
