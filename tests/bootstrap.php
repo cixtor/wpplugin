@@ -1,12 +1,17 @@
 <?php
 
 define('WP_TEST_DIR', __DIR__ . '/../wordpress');
+
+if (isset($_SERVER['WP_MULTISITE'])) {
+    define('WP_TESTS_MULTISITE', 1);
+}
+
 define('WP_INSTALLER', WP_TEST_DIR . '/tests/phpunit/includes/install.php');
 
 if (!file_exists(WP_TEST_DIR)) {
     $output = array();
     $return_var = 255;
-    $command = 'svn co https://develop.svn.wordpress.org/trunk/ wordpress';
+    $command = 'svn co https://develop.svn.wordpress.org/trunk/ wordpress 2> /dev/null';
 
     printf("@ WordPress unit-test suite\n");
     printf("@ Cloning development repository... ");
@@ -18,7 +23,7 @@ if (!file_exists(WP_TEST_DIR)) {
         $config = file_get_contents('wordpress/wp-tests-config-sample.php');
 
         printf("  Setting database name (will be truncated every time)\n");
-        $config = str_replace('youremptytestdbnamehere', 'wordpress', $config);
+        $config = str_replace('youremptytestdbnamehere', 'wordpress_test', $config);
 
         printf("  Setting database username\n");
         $config = str_replace('yourusernamehere', 'root', $config);
